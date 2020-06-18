@@ -11,5 +11,6 @@ def predict_sub():
 
     # TODO
     # Do Stuff
+    subreddit = 'r/wallstreetbets'
 
-    return jsonify({"title": title, "text": text, "subreddit": "r/subreddit"})
+    return jsonify({"title": title, "text": text, "subreddit": subreddit})

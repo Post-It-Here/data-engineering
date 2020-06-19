@@ -7,7 +7,7 @@ home_routes = Blueprint("home_routes", __name__)
 def predict_sub():
     data = request.get_json()
     title = data["title"]
-    text = data["text"]
+    text = data["description"]
 
     # TODO
     # Do Stuff

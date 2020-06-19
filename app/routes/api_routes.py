@@ -1,16 +1,28 @@
-from flask import Blueprint, request, jsonify
+from fastapi import APIRouter
+from pydantic import BaseModel
 
-api = Blueprint("api", __name__)
+
+class UserRequest(BaseModel):
+    title: str
+    description: str
+
+class Prediction(UserRequest):
+    subreddit:str
+
+api_routes = APIRouter()
 
 
-@api.route("/api/predict", methods=["POST"])
-def predict_sub():
-    data = request.get_json()
-    title = data["title"]
-    text = data["description"]
-
+@api_routes.post("/predict", response_model=Prediction)
+def predict_sub(user_request:UserRequest):
+    title = user_request.title
+    description = user_request.description
     # TODO
     # Do Stuff
-    subreddit = 'r/wallstreetbets'
+    prediction = {
+        "title":title,
+        "description":description,
+        "subreddit": "r/wallstreetbets"
+    }
 
-    return jsonify({"title": title, "text": text, "subreddit": subreddit})
+    return prediction
+

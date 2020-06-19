@@ -1,9 +1,8 @@
-from flask import Flask
-from .routes.api_routes import api
+from fastapi import FastAPI
+from .routes.api_routes import Prediction, UserRequest, api_routes
+app = FastAPI()
 
-app = Flask(__name__)
-
-app.register_blueprint(api)
+app.include_router(api_routes, prefix="/api")
 
 @app.route("/hello")
 def hello_world():

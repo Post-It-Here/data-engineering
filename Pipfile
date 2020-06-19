@@ -7,6 +7,9 @@ name = "pypi"
 flask = "*"
 praw = "*"
 gunicorn = "*"
+fastapi = "*"
+uvicorn = "*"
+pydantic = "*"
 
 [dev-packages]
 

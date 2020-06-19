@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 praw = "*"
+gunicorn = "*"
 
 [dev-packages]
 

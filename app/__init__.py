@@ -4,6 +4,7 @@ app = FastAPI()
 
 app.include_router(api_routes, prefix="/api")
 
-@app.route("/hello")
-def hello_world():
-    return "Hello, World!"
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
+

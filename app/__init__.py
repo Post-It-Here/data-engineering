@@ -1,5 +1,6 @@
 from fastapi import FastAPI
-from .routes.api_routes import Prediction, UserRequest, api_routes
+
+from .routes.api_routes import  api_routes
 
 app = FastAPI()
 

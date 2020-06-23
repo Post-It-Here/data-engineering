@@ -1,5 +1,7 @@
 from fastapi import APIRouter
 from pydantic import BaseModel
+from typing import List
+from ..services.data_model import post_predictions
 
 
 class UserRequest(BaseModel):
@@ -7,23 +9,35 @@ class UserRequest(BaseModel):
     description: str
 
 
-class Prediction(UserRequest):
+class PredictionOne(UserRequest):
     subreddit: str
+
+
+class PredictionMany(UserRequest):
+    subreddit: List[List[str]]
 
 
 api_routes = APIRouter()
 
 
-@api_routes.post("/predict", response_model=Prediction)
-async def predict_sub(user_request: UserRequest):
+@api_routes.post("/predict", response_model=PredictionOne)
+def predict_sub(user_request: UserRequest):
     title = user_request.title
     description = user_request.description
     # TODO
     # Do Stuff
+
+    post = f"{title} {description}"
+
+    prediction = post_predictions(post).index
+
+
     prediction = {
         "title": title,
         "description": description,
-        "subreddit": "r/wallstreetbets",
+        "subreddit": f"r/{prediction[0]}",
     }
+
+
 
     return prediction

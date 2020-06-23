@@ -9,6 +9,9 @@ gunicorn = "*"
 fastapi = "*"
 uvicorn = "*"
 pydantic = "*"
+pandas = "*"
+numpy = "*"
+compress-pickle = "*"
 
 [dev-packages]
 

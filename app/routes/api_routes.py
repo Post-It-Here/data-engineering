@@ -13,14 +13,38 @@ class PredictionOne(UserRequest):
     subreddit: str
 
 
+class UserRequestMany(UserRequest):
+    number: int = 3
+
+
 class PredictionMany(UserRequest):
-    subreddit: List[List[str]]
+    subreddits: List[str]
 
 
 api_routes = APIRouter()
 
 
-@api_routes.post("/predict", response_model=PredictionOne)
+@api_routes.post("/predict_many", response_model=PredictionMany)
+def predict_many(user_request: UserRequestMany):
+    title = user_request.title
+    description = user_request.description
+    number = user_request.number
+    # TODO
+    # Do Stuff
+
+    post = f"{title} {description}"
+
+    predictions= [f"r/{x}" for x in post_predictions(post, number).index.tolist()]
+
+    prediction = {
+        "title": title,
+        "description": description,
+        "subreddits": predictions
+    }
+    return prediction
+
+
+@api_routes.post("/predict", response_model=PredictionMany)
 def predict_sub(user_request: UserRequest):
     title = user_request.title
     description = user_request.description
@@ -29,15 +53,12 @@ def predict_sub(user_request: UserRequest):
 
     post = f"{title} {description}"
 
-    prediction = post_predictions(post).index
-
+    prediction = post_predictions(post, 1).index.tolist()[0]
 
     prediction = {
         "title": title,
         "description": description,
-        "subreddit": f"r/{prediction[0]}",
+        "subreddit": f"r/{predictions}",
     }
-
-
 
     return prediction

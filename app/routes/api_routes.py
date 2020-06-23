@@ -34,13 +34,9 @@ def predict_many(user_request: UserRequestMany):
 
     post = f"{title} {description}"
 
-    predictions= [f"r/{x}" for x in post_predictions(post, number).index.tolist()]
+    predictions = [f"r/{x}" for x in post_predictions(post, number).index.tolist()]
 
-    prediction = {
-        "title": title,
-        "description": description,
-        "subreddits": predictions
-    }
+    prediction = {"title": title, "description": description, "subreddits": predictions}
     return prediction
 
 
@@ -58,7 +54,7 @@ def predict_sub(user_request: UserRequest):
     prediction = {
         "title": title,
         "description": description,
-        "subreddit": f"r/{predictions}",
+        "subreddit": f"r/{prediction}",
     }
 
     return prediction

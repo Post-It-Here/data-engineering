@@ -12,6 +12,7 @@ pydantic = "*"
 pandas = "*"
 numpy = "*"
 compress-pickle = "*"
+scikit-learn = "*"
 
 [dev-packages]
 

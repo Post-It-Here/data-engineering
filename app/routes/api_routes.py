@@ -40,7 +40,7 @@ def predict_many(user_request: UserRequestMany):
     return prediction
 
 
-@api_routes.post("/predict", response_model=PredictionMany)
+@api_routes.post("/predict", response_model=PredictionOne)
 def predict_sub(user_request: UserRequest):
     title = user_request.title
     description = user_request.description

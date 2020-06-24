@@ -9,7 +9,7 @@ class UserRequest(BaseModel):
     description: str
 
 
-class PredictionOne(UserRequest):
+class PredictionOne(BaseModel):
     subreddit: str
 
 
@@ -17,7 +17,7 @@ class UserRequestMany(UserRequest):
     number: int = 3
 
 
-class PredictionMany(UserRequest):
+class PredictionMany(BaseModel):
     subreddits: List[str]
 
 

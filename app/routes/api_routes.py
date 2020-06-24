@@ -1,5 +1,5 @@
 from fastapi import APIRouter
-from pydantic import BaseModel
+from pydantic import BaseModel, ValidationError, validator
 from typing import List
 from ..services.data_model import post_predictions
 
@@ -7,6 +7,14 @@ from ..services.data_model import post_predictions
 class UserRequest(BaseModel):
     title: str
     description: str
+
+    class Config:
+        schema_extra = {
+            "example": {
+                "title": "Is data science cool?",
+                "description": "Yeah it is."
+            }
+        }
 
 
 class PredictionOne(BaseModel):
@@ -16,6 +24,14 @@ class PredictionOne(BaseModel):
 class UserRequestMany(UserRequest):
     number: int = 3
 
+    class Config:
+        schema_extra = {
+            "example": {
+                "title": "Is data science cool?",
+                "description": "Yeah it is.",
+                "number": 3
+            }
+        }
 
 class PredictionMany(BaseModel):
     subreddits: List[str]

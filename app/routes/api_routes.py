@@ -26,6 +26,8 @@ api_routes = APIRouter()
 
 @api_routes.post("/predict_many", response_model=PredictionMany)
 def predict_many(user_request: UserRequestMany):
+    """Takes a user request and returns a list of compatible subreddits"""
+
     title = user_request.title
     description = user_request.description
     number = user_request.number
@@ -42,10 +44,10 @@ def predict_many(user_request: UserRequestMany):
 
 @api_routes.post("/predict", response_model=PredictionOne)
 def predict_sub(user_request: UserRequest):
+    """Takes a user request and returns the most compatible subreddit"""
+
     title = user_request.title
     description = user_request.description
-    # TODO
-    # Do Stuff
 
     post = f"{title} {description}"
 

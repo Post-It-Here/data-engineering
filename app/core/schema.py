@@ -26,6 +26,7 @@ class UserInputBase(BaseModel):
 class UserInputCreate(UserInputBase):
     pass
 
+
 class UserInput(UserInputBase):
     id: int
     predictions: List[Prediction] = []

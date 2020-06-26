@@ -15,9 +15,9 @@ class UserInput(Base):
 
 
 class Prediction(Base):
-    __tablename__="predictions"
+    __tablename__ = "predictions"
 
     id = Column(Integer, primary_key=True, index=True)
     subreddit = Column(String)
     user_input = relationship("UserInput", back_populates="predictions")
-
+    input_id = Column(Integer, ForeignKey("user_inputs.id"))

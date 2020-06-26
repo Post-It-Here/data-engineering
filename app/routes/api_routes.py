@@ -1,7 +1,15 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, ValidationError, validator
 from typing import List
 from ..services.data_model import post_predictions
+
+from ..core import schema, database_models, crud
+from ..core.database import SessionLocal, engine
+from sqlalchemy.orm import Session
+
+if __name__ == '__main__':
+    breakpoint()
+    database_models.Base.metadata.create_all(bind=engine)
 
 
 class UserRequest(BaseModel):

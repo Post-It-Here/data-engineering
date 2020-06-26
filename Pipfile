@@ -13,6 +13,7 @@ pandas = "*"
 numpy = "*"
 compress-pickle = "*"
 scikit-learn = "*"
+sqlalchemy = "*"
 
 [dev-packages]
 

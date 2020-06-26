@@ -1,0 +1,19 @@
+//// -- Tables and References
+
+// Creating tables
+Table user_inputs {
+  id int [pk, increment] // auto-increment
+  title varchar
+  description varchar
+
+}
+
+Table predictions {
+  id int [pk]
+  subreddit varchar
+  input_id [fk] // foreign key
+ }
+
+// Creating references
+// > many-to-one; < one-to-many; - one-to-one
+Ref: user_inputs.id > predictions.input_id

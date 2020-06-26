@@ -11,4 +11,5 @@ pipenv install
 uvicorn app:app --reload
 ```
 
-
+## Heroku Deployment
+https://post-it-here-data-api.herokuapp.com/
